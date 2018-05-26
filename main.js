@@ -2,10 +2,12 @@ javascript:
 (
 	function(j,f,dom)
 	{
+
 		j=['level.js',
 		   'cal.js',
 		   'body.js'];
 		dom='https://ymleung45.github.io/maimaiTesting/';
+		consloe.log(dom);
 		f=function(s,u)
 		{
 			if(j.length==0)
