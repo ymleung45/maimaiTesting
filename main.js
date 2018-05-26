@@ -7,7 +7,7 @@ javascript:
 		   'cal.js',
 		   'body.js'];
 		dom='https://ymleung45.github.io/maimaiTesting/';
-		console.log();
+		console.log(dom);
 		f=function(s,u)
 		{
 			if(j.length==0)
