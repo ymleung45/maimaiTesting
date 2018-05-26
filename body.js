@@ -269,6 +269,7 @@ function true_level(lvlist, scorelist)
 	for(var n=0; n<3; n++)
 	{
 		//tmplv=mra_diff2tmp(lvlist[n]);
+    tmplv=lvlist[n];
 		(Math.floor(tmplv)<12||scorelist[n]%500==0)?(levellist.push(lvlist[n])):
 		(levellist.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((scorelist[n]/5)%100-2*Math.floor(tmplv))));
 	}
