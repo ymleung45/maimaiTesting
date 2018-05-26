@@ -1,6 +1,8 @@
 javascript:
 (function()
 {
+console.log('score');
+
 var ex_list=[], ma_list=[], re_list=[], clist=[];	//データ取得用変数
 var play_hist=[], play_hist50=[], play_hist30=[];
 
@@ -238,8 +240,8 @@ function true_achive(score, score100per)
 		return 0;
 	else
 		return Number(score)/(score100per - (score100per%500));
-    console.log(Number(score)/(score100per - (score100per%500)));
-    console.log(score);
+
+
 }
 
 function sort_condition(a,b)
