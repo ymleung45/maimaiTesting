@@ -386,7 +386,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 	}
 	dlist.sort(sort_condition);
 
-  console.log(dlist[i].name);
+  console.log(dlist[0].name);
 
 	if(hashtag.slice(-4)=="test")
 	{
