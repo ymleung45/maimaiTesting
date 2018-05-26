@@ -239,6 +239,7 @@ function true_achive(score, score100per)
 	else
 		return Number(score)/(score100per - (score100per%500));
     console.log(Number(score)/(score100per - (score100per%500)));
+    console.log(score);
 }
 
 function sort_condition(a,b)
