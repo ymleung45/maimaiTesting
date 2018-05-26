@@ -388,9 +388,11 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 
 
 	dlist.sort(sort_condition);
-  console.log(dlist[0].name);
-  console.log(dlist[0].lv);
-
+  for(var i=0; i<mlist_length; i++)
+	{
+  console.log(dlist[i].name);
+  console.log(dlist[i].lv);
+  }
 
 	if(hashtag.slice(-4)=="test")
 	{
