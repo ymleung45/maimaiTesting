@@ -327,6 +327,7 @@ function get_playdata(addr)
 function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
+  console.log(mlist_length);
 	for(var i=0; i<12; i++)	// versionの数
 	{
 		ex_comp.push([0,0,0,0]);
