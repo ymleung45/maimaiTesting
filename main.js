@@ -2,10 +2,10 @@ javascript:
 (
 	function(j,f,dom)
 	{
-		j=['mai_inner_level_milk2.js',
-		   'calc_rating.js',
-		   'maiRatingAnalyzer_body.js'];
-		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
+		j=['level.js',
+		   'cal.js',
+		   'body.js'];
+		dom='https://ymleung45.github.io/maimaiTesting/';
 		f=function(s,u)
 		{
 			if(j.length==0)
