@@ -333,6 +333,11 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		ma_comp.push([0,0,0,0]);
 	}
 
+  for(var i=0; i<mlist_length; i++)
+	{
+    console.log(ma_list[i][0]);
+  }  
+
 	for(var i=0; i<mlist_length; i++)
 	{
 		//lv表と取得データの名前が一致なら処理を進める
