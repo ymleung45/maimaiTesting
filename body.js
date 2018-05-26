@@ -327,18 +327,14 @@ function get_playdata(addr)
 function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
-  console.log(mlist_length);
+  //console.log(mlist_length);
 	for(var i=0; i<12; i++)	// versionの数
 	{
 		ex_comp.push([0,0,0,0]);
 		ma_comp.push([0,0,0,0]);
 	}
 
-  for(var i=0; i<mlist_length; i++)
-	{
-    var testing = '123321';
-    console.log(testing);
-  }
+
 
 	for(var i=0; i<mlist_length; i++)
 	{
@@ -363,7 +359,6 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 			dlist[i].rate_values[1] = mra_arch2rate_100(dlist[i].achive[1], dlist[i].lv[1]);
 			dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
 			dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
-      console.log('ho');
 			if(!friendmode)
 			{
 				for(var n=0; n<4; n++)
@@ -390,6 +385,8 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		}
 	}
 	dlist.sort(sort_condition);
+
+  console.log(dlist[i].name);
 
 	if(hashtag.slice(-4)=="test")
 	{
