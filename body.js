@@ -238,8 +238,8 @@ function true_achive(score, score100per)
 	if(score == "---" || score100per == 0)
 		return 0;
 	else{
-		return Number(score)/(score100per - (score100per%500));
     console.log(Number(score)/(score100per - (score100per%500)));
+		return Number(score)/(score100per - (score100per%500));
   }
 
 }
