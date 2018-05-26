@@ -238,7 +238,7 @@ function true_achive(score, score100per)
 	if(score == "---" || score100per == 0)
 		return 0;
 	else{
-    console.log(Number(score)/(score100per - (score100per%500)));
+    //console.log(Number(score)/(score100per - (score100per%500)));
 		return Number(score)/(score100per - (score100per%500));
   }
 
@@ -268,7 +268,7 @@ function true_level(lvlist, scorelist)
 	var levellist=[], tmplv=0;
 	for(var n=0; n<3; n++)
 	{
-		tmplv=mra_diff2tmp(lvlist[n]);
+		//tmplv=mra_diff2tmp(lvlist[n]);
 		(Math.floor(tmplv)<12||scorelist[n]%500==0)?(levellist.push(lvlist[n])):
 		(levellist.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((scorelist[n]/5)%100-2*Math.floor(tmplv))));
 	}
