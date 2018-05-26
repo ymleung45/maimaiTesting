@@ -3,10 +3,10 @@ javascript:
 	function(j,f,dom)
 	{
 
-		j=['level.js',
-		   'cal.js',
-		   'body.js'];
-		dom='https://ymleung45.github.io/maimaiTesting/';
+		j=['https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level_milk3.js',
+		   'https://ymleung45.github.io/maimaiTesting/cal.js',
+		   'https://ymleung45.github.io/maimaiTesting/body.js'];
+		dom='';
 		console.log(dom);
 		f=function(s,u)
 		{
