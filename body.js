@@ -271,6 +271,8 @@ function true_level(lvlist, scorelist)
 		tmplv=mra_diff2tmp(lvlist[n]);
 		(Math.floor(tmplv)<12||scorelist[n]%500==0)?(levellist.push(lvlist[n])):
 		(levellist.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((scorelist[n]/5)%100-2*Math.floor(tmplv))));
+
+
     console.log(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((scorelist[n]/5)%100-2*Math.floor(tmplv)));
 	}
 
@@ -336,6 +338,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].t)
 		{
+      console.log(ma_list[i][0]);
 			dlist.push({
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].n,
