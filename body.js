@@ -335,8 +335,9 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 
   for(var i=0; i<mlist_length; i++)
 	{
-    console.log(ma_list[i][0]);
-  }  
+    vat testing = '123321'
+    console.log(testing);
+  }
 
 	for(var i=0; i<mlist_length; i++)
 	{
