@@ -384,9 +384,13 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 			});
 		}
 	}
-	dlist.sort(sort_condition);
 
   console.log(dlist[0].name);
+
+
+	dlist.sort(sort_condition);
+
+
 
 	if(hashtag.slice(-4)=="test")
 	{
