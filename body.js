@@ -917,8 +917,8 @@ function print_result()
 
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
 
-	rslt_str += "<h2 align=center>Rating解析結果=你係垃圾</h2>";
-	rslt_str += "<h2 align=center>" + your_id + " 話你呀 唔洗望啦" + "</h2>";
+	rslt_str += "<h4 align=center>Rating解析結果=你係垃圾</h4>";
+	rslt_str += "<h4 align=center>" + your_id + " 話你呀 唔洗望啦" + "</h4>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
