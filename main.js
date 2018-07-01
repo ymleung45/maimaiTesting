@@ -3,7 +3,7 @@ javascript:
 	function(j,f,dom)
 	{
 		//https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_in_lv_milk.js
-		j=['https://ymleung45.github.io/maimaiTesting/level.js',
+		j=['https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_in_lv_milk.js',
 		   'https://ymleung45.github.io/maimaiTesting/cal.js',
 		   'https://ymleung45.github.io/maimaiTesting/body.js'];
 		dom='';
