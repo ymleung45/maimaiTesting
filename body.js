@@ -379,6 +379,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		}
 		else	// 違う場合は空データを入れて終了。
 		{
+			console.log("error: "+dlist[i].name+" "+maimai_inner_lv[lvlist_count].t);
 			dlist.push(
 				{name:ma_list[i][0],
 				 nick:"",
