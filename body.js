@@ -341,44 +341,44 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		for(var lvlist_countX=0; i<mlist_length; i++)
 		{
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0] == maimai_inner_lv[lvlist_countX].t)
-		{
-
-			dlist.push({
-				name:ma_list[i][0],
-				nick:maimai_inner_lv[lvlist_countX].n,
-				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_countX].s[0]),
-				true_achive(ma_list[i][f], maimai_inner_lv[lvlist_countX].s[1]),
-				(re_count >= re_length)?"---":
-					(re_list[re_count][0]==ma_list[i][0])?
-						true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_countX].s[2]):"---"],
-				lv:true_level(maimai_inner_lv[lvlist_countX].l, maimai_inner_lv[lvlist_countX].s),
-				rate_values:[0,	0, 0],
-				shortage:["", "", ""],
-				music_rate : 0
-			});
-			dlist[i].rate_values[0] = mra_arch2rate_100(dlist[i].achive[0], dlist[i].lv[0]);
-			dlist[i].rate_values[1] = mra_arch2rate_100(dlist[i].achive[1], dlist[i].lv[1]);
-			dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
-			dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
-
-      			console.log(dlist[i].name);
-      			console.log(dlist[i].rate_values[0]);
-     			console.log(dlist[i].rate_values[1]);
-     			console.log(dlist[i].rate_values[2]);
-
-
-			if(!friendmode)
+			if(ma_list[i][0] == maimai_inner_lv[lvlist_countX].t)
 			{
-				for(var n=0; n<4; n++)
-				{
-					ex_comp[maimai_inner_lv[lvlist_countX].v][n] += ex_list[i][2][n];
-					ma_comp[maimai_inner_lv[lvlist_countX].v][n] += ma_list[i][2][n];
-				}
-			}
 
-			lvlist_count++;
-		}
+				dlist.push({
+					name:ma_list[i][0],
+					nick:maimai_inner_lv[lvlist_countX].n,
+					achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_countX].s[0]),
+					true_achive(ma_list[i][f], maimai_inner_lv[lvlist_countX].s[1]),
+					(re_count >= re_length)?"---":
+						(re_list[re_count][0]==ma_list[i][0])?
+							true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_countX].s[2]):"---"],
+					lv:true_level(maimai_inner_lv[lvlist_countX].l, maimai_inner_lv[lvlist_countX].s),
+					rate_values:[0,	0, 0],
+					shortage:["", "", ""],
+					music_rate : 0
+				});
+				dlist[i].rate_values[0] = mra_arch2rate_100(dlist[i].achive[0], dlist[i].lv[0]);
+				dlist[i].rate_values[1] = mra_arch2rate_100(dlist[i].achive[1], dlist[i].lv[1]);
+				dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
+				dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
+
+				console.log(dlist[i].name);
+				console.log(dlist[i].rate_values[0]);
+				console.log(dlist[i].rate_values[1]);
+				console.log(dlist[i].rate_values[2]);
+
+
+				if(!friendmode)
+				{
+					for(var n=0; n<4; n++)
+					{
+						ex_comp[maimai_inner_lv[lvlist_countX].v][n] += ex_list[i][2][n];
+						ma_comp[maimai_inner_lv[lvlist_countX].v][n] += ma_list[i][2][n];
+					}
+				}
+
+				lvlist_count++;
+			
 		}
 		else	// 違う場合は空データを入れて終了。
 		{
@@ -393,6 +393,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				shortage:["", "", ""],
 				music_rate : 0
 			});
+		}
 		}
 	}
 
