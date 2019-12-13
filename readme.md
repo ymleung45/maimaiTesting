@@ -1,1 +1,1 @@
-javascript:( function(){ let s = document.createElement('script'); s.setAttribute('type', 'text/javascript'); s.setAttribute('src', 'https://raw.githubusercontent.com/ymleung45/maimaiTesting/master/maimaiJs.js'); document.getElementsByTagName('head')[0].appendChild(s); })(); void(0);
+javascript:( function(){ let s = document.createElement('script'); s.setAttribute('type', 'text/javascript'); s.setAttribute('src', 'https://gitcdn.link/repo/ymleung45/maimaiTesting/master/maimaiJs.js'); document.getElementsByTagName('head')[0].appendChild(s); })(); void(0);
