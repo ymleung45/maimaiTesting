@@ -399,30 +399,30 @@ function setUpTable() {
             cell8.innerHTML = songFinalRt[i];
 
             if(difficult[i] == "Master"){
-                cell1.style.backgroundColor="#e3c5fd";
+                cell2.style.backgroundColor="#e3c5fd";
                 // #ebff00
                 // #e3c5fd 
             }
 
             if(lvData[i] == "12+"){
-                cell2.style.backgroundColor="#9bdcde";
                 cell3.style.backgroundColor="#9bdcde";
+                cell4.style.backgroundColor="#9bdcde";
 
                 // #ebff00
                 // #e3c5fd 
             }
 
             if(lvData[i] == "13"){
-                cell2.style.backgroundColor="#ffee4b";
                 cell3.style.backgroundColor="#ffee4b";
+                cell4.style.backgroundColor="#ffee4b";
 
                 // #ebff00
                 // #e3c5fd 
             }
 
             if(lvData[i] == "13+"){
-                cell2.style.backgroundColor="#f0666b";
                 cell3.style.backgroundColor="#f0666b";
+                cell4.style.backgroundColor="#f0666b";
 
                 // #ebff00
                 // #e3c5fd 
