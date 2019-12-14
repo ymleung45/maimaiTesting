@@ -383,14 +383,45 @@ function setUpTable() {
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
 
-
-            cell1.innerHTML = lvData[i];
-            cell2.innerHTML = difficult[i];
+            cell1.innerHTML = difficult[i];
+            cell2.innerHTML = lvData[i];
             cell3.innerHTML = nameData[i];
             cell4.innerHTML = scoreData[i];
             cell5.innerHTML = typeData[i];
             cell6.innerHTML = songRt[i];
             cell7.innerHTML = songFinalRt[i];
+
+            if(difficult[i] == "Master"){
+                cell1.style.backgroundColor="#e3c5fd";
+                // #ebff00
+                // #e3c5fd 
+            }
+
+            if(lvData[i] == "12+"){
+                cell2.style.backgroundColor="#9bdcde";
+                cell3.style.backgroundColor="#9bdcde";
+
+                // #ebff00
+                // #e3c5fd 
+            }
+
+            if(lvData[i] == "13"){
+                cell2.style.backgroundColor="#ffee4b";
+                cell3.style.backgroundColor="#ffee4b";
+
+                // #ebff00
+                // #e3c5fd 
+            }
+
+            if(lvData[i] == "13+"){
+                cell2.style.backgroundColor="#f0666b";
+                cell3.style.backgroundColor="#f0666b";
+
+                // #ebff00
+                // #e3c5fd 
+            }
+
+
 
 
             arrayString += "[\"" + nameData[i] + "\",],";
@@ -402,11 +433,19 @@ function setUpTable() {
     cell2 = row.insertCell(1);
     cell3 = row.insertCell(2);
     cell4 = row.insertCell(3);
+    cell5 = row.insertCell(4);
+    cell6 = row.insertCell(5);
+    cell7 = row.insertCell(6);
 
-    cell1.innerHTML = "Lv";
-    cell2.innerHTML = "Diff";
+    cell1.innerHTML = "diff";
+    cell2.innerHTML = "Lv";
     cell3.innerHTML = "Title";
     cell4.innerHTML = "Score";
+    cell5.innerHTML = "Version";
+    cell6.innerHTML = "innerLv";
+    cell7.innerHTML = "RT";
+
+    
 
     arrayString += "]";
     // console.log(arrayString)
