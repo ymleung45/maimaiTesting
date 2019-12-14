@@ -387,14 +387,16 @@ function setUpTable() {
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(6);
 
-            cell1.innerHTML = difficult[i];
-            cell2.innerHTML = lvData[i];
-            cell3.innerHTML = nameData[i];
-            cell4.innerHTML = scoreData[i];
-            cell5.innerHTML = typeData[i];
-            cell6.innerHTML = songRt[i];
-            cell7.innerHTML = songFinalRt[i];
+            cell1.innerHTML = lvData.length-i;
+            cell2.innerHTML = difficult[i];
+            cell3.innerHTML = lvData[i];
+            cell4.innerHTML = nameData[i];
+            cell5.innerHTML = scoreData[i];
+            cell6.innerHTML = typeData[i];
+            cell7.innerHTML = songRt[i];
+            cell8.innerHTML = songFinalRt[i];
 
             if(difficult[i] == "Master"){
                 cell1.style.backgroundColor="#e3c5fd";
@@ -441,14 +443,16 @@ function setUpTable() {
     cell5 = row.insertCell(4);
     cell6 = row.insertCell(5);
     cell7 = row.insertCell(6);
+    cell8 = row.insertCell(6);
 
-    cell1.innerHTML = "diff";
-    cell2.innerHTML = "Lv";
-    cell3.innerHTML = "Title";
-    cell4.innerHTML = "Score";
-    cell5.innerHTML = "Version";
-    cell6.innerHTML = "innerLv";
-    cell7.innerHTML = "RT";
+    cell1.innerHTML = "no.";
+    cell2.innerHTML = "diff";
+    cell3.innerHTML = "Lv";
+    cell4.innerHTML = "Title";
+    cell5.innerHTML = "Score";
+    cell6.innerHTML = "Version";
+    cell7.innerHTML = "innerLv";
+    cell8.innerHTML = "RT";
 
     
 
@@ -466,4 +470,3 @@ document.close();
 
 
 
- 
