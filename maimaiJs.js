@@ -179,7 +179,9 @@ var scoreData = [];
 var lvData = [];
 var difficult = [];
 var typeData = [];
-var songFinalrt = [];
+var songRt = [];
+var songFinalRt = [];
+
 var songRatingList = getRatingList();
 
 function getsongRating(name,lv){
@@ -191,9 +193,21 @@ function getsongRating(name,lv){
     }
     return 0;
 }
+function getsongFinalRating(score,rt){
+    if(score>=100.5){
+        return (rt * 15.075);
+    }else if (score>=100){
+        return (rt * score*0.01 * 14)
+    }else if(score>=99.5){
+        return (rt * score*0.01 * 13.5)
+    }else{
+        return 0;
+    }
+}
 
+
+console.log(getsongFinalRating(100.5,13));
 // console.log(getsongRating("MAXRAGE","12+"));
-
 
 
 
@@ -206,7 +220,6 @@ for (i = 0; i < musicBLock.length; i++) {
 
 
         if (lv != "13+" && lv != "13" && lv != "12+" && lv != "14") {
-            console.log("skip " + i);
             continue;
         }
         // console.log("processing " + n);
@@ -235,13 +248,16 @@ for (i = 0; i < musicBLock.length; i++) {
             }
             // type = "two Type"
         }
+        finalRt = getsongFinalRating(news,rt);
+
 
         nameData.push(n);
         scoreData.push(Number(news));
         lvData.push(String(lv).trim());
         difficult.push("Master");
         typeData.push(type);
-        songFinalrt.push(rt);
+        songRt.push(rt);
+        songFinalRt.push(finalRt);
 
         // console.log(songFinalrt[i]+ " " +typeData[i]+ " " + lvData[i] + " " + nameData[i] + " " + scoreData[i]);
     } catch{
@@ -252,7 +268,7 @@ for (i = 0; i < musicBLock.length; i++) {
 
 function showData() {
     for (i = 0; i < lvData.length; i++) {
-        console.log(songFinalrt[i]+ " " + difficult[i] + " " + lvData[i] + " " + nameData[i] + " " + scoreData[i]);
+        console.log(songRt[i]+ " " + difficult[i] + " " + lvData[i] + " " + nameData[i] + " " + scoreData[i]);
     }
 }
 
@@ -296,12 +312,17 @@ function getRemasterData() {
                     type = "two Type"
                     rt=0;
                 }
+                finalRt = getsongFinalRating(news,rt);
+
+
                 nameData.push(n);
                 scoreData.push(Number(news));
                 lvData.push(String(lv).trim());
                 difficult.push("ReMaster");
                 typeData.push(type);
-                songFinalrt.push(rt);
+                songRt.push(rt);
+                songFinalRt.push(finalRt);
+
 
             } catch{
                 continue;
@@ -312,8 +333,32 @@ function getRemasterData() {
 }
 
 getRemasterData();
-showData();
+// showData();
 //show data in web page
+
+function swap(input, index_A, index_B) {
+    var temp = input[index_A];
+ 
+    input[index_A] = input[index_B];
+    input[index_B] = temp;
+}
+
+function shortArrat(){
+    for (a = 0; a < lvData.length; a++) {
+        for (b = 0; b < lvData.length-1; b++) {
+            if(songFinalRt[a]<songFinalRt[b]){
+                swap(lvData,a,b);
+                swap(difficult,a,b);
+                swap(nameData,a,b);
+                swap(scoreData,a,b);
+                swap(typeData,a,b);
+                swap(songRt,a,b);
+                swap(songFinalRt,a,b);
+            }
+
+        }
+    }
+}
 
 document.open();
 document.write("<body></body>");
@@ -324,9 +369,10 @@ table.border = "3";
 var arrayString = "["
 
 function setUpTable() {
+    shortArrat();
+
     for (i = 0; i < lvData.length; i++) {
         if (lvData[i] != "13+" && lvData[i] != "13" && lvData[i] != "12+" && lvData[i] != "14") {
-
         } else {
             var row = table.insertRow(0);
             var cell1 = row.insertCell(0);
@@ -335,13 +381,16 @@ function setUpTable() {
             var cell4 = row.insertCell(3);
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+
 
             cell1.innerHTML = lvData[i];
             cell2.innerHTML = difficult[i];
             cell3.innerHTML = nameData[i];
             cell4.innerHTML = scoreData[i];
             cell5.innerHTML = typeData[i];
-            cell6.innerHTML = songFinalrt[i];
+            cell6.innerHTML = songRt[i];
+            cell7.innerHTML = songFinalRt[i];
 
 
             arrayString += "[\"" + nameData[i] + "\",],";
@@ -360,7 +409,7 @@ function setUpTable() {
     cell4.innerHTML = "Score";
 
     arrayString += "]";
-    console.log(arrayString)
+    // console.log(arrayString)
 
 }
 // setUpTable();
