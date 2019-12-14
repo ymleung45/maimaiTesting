@@ -199,8 +199,13 @@ function getsongFinalRating(score,rt){
     }else if (score>=100){
         return (rt * score*0.01 * 14)
     }else if(score>=99.5){
-        return (rt * score*0.01 * 13.5)
-    }else{
+        return (rt * score*0.01 * 13)
+    }else if(score>=99){
+        return (rt * score*0.01 * 12)
+    }else if(score>=98){
+        return (rt * score*0.01 * 11)
+    }
+    else{
         return 0;
     }
 }
