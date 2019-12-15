@@ -181,6 +181,8 @@ var difficult = [];
 var typeData = [];
 var songRt = [];
 var songFinalRt = [];
+var DXTotalRT = 0;
+var STTotalRT = 0;
 
 var songRatingList = getRatingList();
 
@@ -253,7 +255,7 @@ for (i = 0; i < musicBLock.length; i++) {
             }
             // type = "two Type"
         }
-        finalRt = getsongFinalRating(news,rt);
+        finalRt = Math.ceil(getsongFinalRating(news,rt));
 
 
         nameData.push(n);
@@ -295,6 +297,10 @@ function getRemasterData() {
                 n = RemasterMusicBLock[i].querySelector(".music_name_block").innerText;
                 lv = RemasterMusicBLock[i].querySelector(".music_lv_block").innerText;
                 // typeString = String(RemasterMusicBLock[i].src);
+                if (lv != "13+" && lv != "13" && lv != "12+" && lv != "14") {
+                    continue;
+                }
+
                 try {
                     s = RemasterMusicBLock[i].querySelector(".music_score_block").innerText;
                     var news = s.replace("%", "");
@@ -317,7 +323,7 @@ function getRemasterData() {
                     type = "two Type"
                     rt=0;
                 }
-                finalRt = getsongFinalRating(news,rt);
+                finalRt = Math.ceil(getsongFinalRating(news,rt));
 
 
                 nameData.push(n);
@@ -336,7 +342,7 @@ function getRemasterData() {
         setUpTable();
     }
 }
-
+var currentDXSongPos = 0
 getRemasterData();
 // showData();
 //show data in web page
@@ -349,9 +355,27 @@ function swap(input, index_A, index_B) {
 }
 
 function shortArrat(){
+    //find ALL DX song in top
     for (a = 0; a < lvData.length; a++) {
+        if(typeData[a]=="DX"){
+            currentDXSongPos+=1;
+        }
         for (b = 0; b < lvData.length-1; b++) {
-            if(songFinalRt[a]<songFinalRt[b]){
+            if(typeData[a]=="DX"){
+                swap(lvData,a,b);
+                swap(difficult,a,b);
+                swap(nameData,a,b);
+                swap(scoreData,a,b);
+                swap(typeData,a,b);
+                swap(songRt,a,b);
+                swap(songFinalRt,a,b);
+            }
+        }
+    }
+
+    for (a = 0; a < currentDXSongPos; a++) {
+        for (b = 0; b < currentDXSongPos-1; b++) {
+            if(songFinalRt[a]>songFinalRt[b]){
                 swap(lvData,a,b);
                 swap(difficult,a,b);
                 swap(nameData,a,b);
@@ -363,7 +387,51 @@ function shortArrat(){
 
         }
     }
+
+    for (a = currentDXSongPos; a < lvData.length; a++) {
+        for (b = currentDXSongPos; b < lvData.length-1; b++) {
+            if(songFinalRt[a]>songFinalRt[b]){
+                swap(lvData,a,b);
+                swap(difficult,a,b);
+                swap(nameData,a,b);
+                swap(scoreData,a,b);
+                swap(typeData,a,b);
+                swap(songRt,a,b);
+                swap(songFinalRt,a,b);
+            }
+
+        }
+    }
+
+    
+
+    //find DX total RT
+    var caledDxsong = -1;
+    for (a = 0; a < currentDXSongPos; a++) {
+        if(caledDxsong<=15 && typeData[a]=="DX") {
+            DXTotalRT +=songFinalRt[a];
+            console.log(a + " add " + songRt[a]+ " " + " " + nameData[a] + " " + songFinalRt[a])
+            caledDxsong++;
+        }
+    }
+
+    //find ST total RT
+    for (a = currentDXSongPos; a < currentDXSongPos+25; a++) {
+            STTotalRT +=songFinalRt[a];
+            console.log(a + " add " + songRt[a]+ " " + " " + nameData[a] + " " + songFinalRt[a])
+
+    }
+
+    console.log("currentDXSongPos " + currentDXSongPos)
+    console.log("DXrate " + DXTotalRT)
+    console.log("STrate " + STTotalRT)
+    console.log("total: " + (STTotalRT+DXTotalRT))
+
+
+
 }
+
+
 
 document.open();
 document.write("<body></body>");
@@ -376,9 +444,11 @@ var arrayString = "["
 function setUpTable() {
     shortArrat();
 
-    for (i = 0; i < lvData.length; i++) {
-        if (lvData[i] != "13+" && lvData[i] != "13" && lvData[i] != "12+" && lvData[i] != "14") {
-        } else {
+    // showData();
+
+    var songNumber = 1;
+    for (i = lvData.length; i >= 0; i--) {
+
             var row = table.insertRow(0);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -389,7 +459,12 @@ function setUpTable() {
             var cell7 = row.insertCell(6);
             var cell8 = row.insertCell(6);
 
-            cell1.innerHTML = lvData.length-i;
+            if(i>=currentDXSongPos){
+                cell1.innerHTML = i-currentDXSongPos+1;
+            }else{//DX
+                cell1.innerHTML = i+1;
+            }
+
             cell2.innerHTML = difficult[i];
             cell3.innerHTML = lvData[i];
             cell4.innerHTML = nameData[i];
@@ -397,6 +472,9 @@ function setUpTable() {
             cell6.innerHTML = typeData[i];
             cell7.innerHTML = songRt[i];
             cell8.innerHTML = songFinalRt[i];
+
+
+            songNumber++;
 
             if(difficult[i] == "Master"){
                 cell2.style.backgroundColor="#e3c5fd";
@@ -432,10 +510,36 @@ function setUpTable() {
 
 
             arrayString += "[\"" + nameData[i] + "\",],";
-        }
+        
     }
+    //RT info
     row = table.insertRow(0);
+    cell1 = row.insertCell(0);
+    cell2 = row.insertCell(1);
+    cell3 = row.insertCell(2);
+    cell4 = row.insertCell(3);
+    cell5 = row.insertCell(4);
+    cell6 = row.insertCell(5);
+    cell7 = row.insertCell(6);
+    cell8 = row.insertCell(6);
 
+    cell1.innerHTML = "";
+    cell2.innerHTML = "";
+    cell3.innerHTML = "";
+    cell4.innerHTML = "Total RT: " + (STTotalRT+DXTotalRT) + "    DX: " + DXTotalRT + "    ST: " +  STTotalRT;
+    cell5.innerHTML = "";
+    cell6.innerHTML = "";
+    cell7.innerHTML = "";
+    cell8.innerHTML = "";
+
+    // cell2.style.backgroundColor="#ffb2b2";
+    // cell3.style.backgroundColor="#ffb2b2";
+    cell4.style.backgroundColor="#ffb2b2";
+
+    //ccccff
+
+    //title
+    row = table.insertRow(0);
     cell1 = row.insertCell(0);
     cell2 = row.insertCell(1);
     cell3 = row.insertCell(2);
